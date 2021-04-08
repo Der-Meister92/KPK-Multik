@@ -10,7 +10,6 @@ const COLORREF TX_PURPLE   = RGB (186,  85, 211),
                TX_MYBROWN  = RGB (139,  69,  19);
 
 void Background    ();
-void TitlesBegin   ();
 void SolnceDraw    (int x, int y, int DlinaLucha);
 void OblakoDraw    (int x, int y, double sizeX, double sizeY);
 void CvetokDraw    (int x, int y, double size,
@@ -36,7 +35,9 @@ void SemerkaDraw   (int x, int y);
 void MoskvichDraw  (int x, int y, int KapotUp, int OknoDown, int Antena, double size);
 void DimokDraw     (int x, int y, double Size);
 void Serdechko     (int x, int y, double Size);
+void TitlesBegin   ();
 void TitlesEnd     ();
+void ZadniiPlan    (int t);
 void Scena1        ();
 void KameraMotor   ();
 
@@ -760,58 +761,52 @@ void KameraMotor ()
     txEnd ();
     }
 
+void ZadniiPlan (int t)
+    {
+    OblakoDraw (  20+t/2, 20,     1,     1);
+    OblakoDraw ( 280+t/2, 60, -0.75,     1);
+    OblakoDraw ( 300+t/2, 50,     1, -0.75);
+    OblakoDraw ( 600-t/2, 80, -0.75, -0.75);
+    OblakoDraw ( 750-t/2, 50,    -1,    -1);
+    OblakoDraw ( 800-t/2, 70,     1,    -1);
+    OblakoDraw (1100-t/2, 60,    -1,     1);
+
+    if ((t/40)%2<1)
+        {
+        SolnceDraw (1300, 80, 1+t%40);
+        }
+    else
+        {
+        SolnceDraw (1300, 80, 39-t%40);
+        }
+
+    if ((t<475)|(t>=1600))
+        {
+        STODraw (1100, 300, 0, 0);
+        }
+    if ((t>=475)&(t<635))
+        {
+        STODraw (1100, 300, 0+(t-474)/2, 0);
+        }
+    if ((t>=635)&(t<1440))
+        {
+        STODraw (1100, 300, 80, 1);
+        }
+    if ((t>=1440)&(t<1600))
+        {
+        STODraw (1100, 300, 80-(t-1439)/2, 0);
+        }
+    }
+
 void Scena1 ()
     {
-    int DlinaLucha=0;
     for (int t=0; t<2000; t++)
         {
         txSetFillColor (TX_WHITE);
         txClear ();
         Background ();
 
-        OblakoDraw (  20+t/2, 20,     1,     1);
-        OblakoDraw ( 280+t/2, 60, -0.75,     1);
-        OblakoDraw ( 300+t/2, 50,     1, -0.75);
-        OblakoDraw ( 600-t/2, 80, -0.75, -0.75);
-        OblakoDraw ( 750-t/2, 50,    -1,    -1);
-        OblakoDraw ( 800-t/2, 70,     1,    -1);
-        OblakoDraw (1100-t/2, 60,    -1,     1);
-
-        if (DlinaLucha<=39)
-            {
-            SolnceDraw (1300, 80, DlinaLucha);
-            DlinaLucha++;
-            }
-        if ((DlinaLucha>=40)&(DlinaLucha<=80))
-            {
-            SolnceDraw (1300, 80, 80-DlinaLucha);
-            DlinaLucha++;
-            }
-        if (DlinaLucha>80)
-            {
-            DlinaLucha=0;
-            }
-
-        if (t<475)
-            {
-            STODraw (1100, 300, 0, 0);
-            }
-        if ((t>=475)&(t<635))
-            {
-            STODraw (1100, 300, 0+(t-474)/2, 0);
-            }
-        if ((t>=635)&(t<1440))
-            {
-            STODraw (1100, 300, 80, 1);
-            }
-        if ((t>=1440)&(t<1600))
-            {
-            STODraw (1100, 300, 80-(t-1439)/2, 0);
-            }
-        if (t>=1600)
-            {
-            STODraw (1100, 300, 0, 0);
-            }
+        ZadniiPlan (t);
 
         if (t<=200)
             {
@@ -968,6 +963,11 @@ void Scena1 ()
             MadamBokDraw  (709, 360, 0, 0, 0, 0, 1);
             }
 
+        if ((t>=1650)&(t<1901))
+            {
+            MoskvichDraw (800-(t-1649)*5, 460, 0, -50, 0, 1);
+            }
+
         if ((t>=1600)&(t<2000))
             {
             SvetoforDraw (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
@@ -975,12 +975,8 @@ void Scena1 ()
             SvetoforDraw (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
                           TX_BLACK, TX_BLACK);
             }
-
-        if ((t>=1650)&(t<1901))
-            {
-            MoskvichDraw (800-(t-1649)*5, 460, 0, -50, 0, 1);
-            }
         txSleep (1);
         }
     }
+
 
