@@ -40,6 +40,7 @@ void TitlesBegin   ();
 void TitlesEnd     ();
 void ZadniiPlan    (int t);
 void Scena         (int t);
+void Scena2        (int t);
 void Scena1        ();
 void KameraMotor   ();
 
@@ -812,7 +813,7 @@ void ZadniiPlan (int t)
 
 void Scena (int t)
     {
-    if (t<300)
+    if (t<=300)
         {
         if (t<100)
             {
@@ -836,6 +837,7 @@ void Scena (int t)
                 {
                 SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
                               TX_DARKGRAY, TX_MYRED);
+                SemerkaDraw (10, 580);
                 SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
                               TX_BLACK, TX_BLACK);
                 }
@@ -845,6 +847,93 @@ void Scena (int t)
         }
     }
 
+void Scena2 (int t)
+    {
+    if ((t>300)&(t<=700))
+        {
+        if (t>450)
+            {
+            if (t>=475)
+                {
+                if (t>=525)
+                    {
+                    if (t>=620)
+                        {
+                        if (t>=650)
+                            {
+                            SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                                          TX_GREEN, TX_DARKGRAY);
+                            SemerkaDraw (10, 580);
+                            SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                                          TX_BLACK, TX_BLACK);
+                            MoskvichDraw (800, 460, -60, 0, 0, (t/15)%2, 1);
+                            MisterZadDraw (776, 380, 1);
+                            MadamZadDraw  (338, 582, 0, 0, 0, 0, 1);
+                            }
+                        else
+                            {
+                            SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                                          TX_GREEN, TX_DARKGRAY);
+                            SemerkaDraw (10, 580);
+                            SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                                          TX_BLACK, TX_BLACK);
+                            MoskvichDraw (800, 460, -60, 0, 0, (t/15)%2, 1);
+                            MisterZadDraw (776, 380, 1);
+                            MadamDraw  (367-(t-619), 553+(t-619), 2, TX_BLUE, 1,
+                                        0, 0, 0+(t/10)%2, 1-(t/10)%2, 1);
+                            }
+                        }
+                    else
+                        {
+                        SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                                      TX_GREEN, TX_DARKGRAY);
+                        SemerkaDraw (10, 580);
+                        SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                                      TX_BLACK, TX_BLACK);
+                        MoskvichDraw (800, 460, -60, 0, 0, (t/15)%2, 1);
+                        MisterBokDraw (900-(t-524), 380, 0+((t-524)/10%2), 1-((t-524)/10%2), 1);
+                        MadamDraw  (462-(t-524), 458+(t-524), 2, TX_BLUE, 1,
+                                    0, 0, 0+(t/10)%2, 1-(t/10)%2, 1);
+                        }
+                    }
+                else
+                    {
+                    SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                                  TX_GREEN, TX_DARKGRAY);
+                    SemerkaDraw (10, 580);
+                    SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                                  TX_BLACK, TX_BLACK);
+                    MoskvichDraw (800, 460, -60, 0, 0, (t/15)%2, 1);
+                    MisterDraw (900, 380, 2, TX_BROWN, 1, 0, 0, 1);
+                    MadamDraw  (512-(t-474), 408+(t-474), 2, TX_BLUE, 1,
+                                0, 0, 0+(t/10)%2, 1-(t/10)%2, 1);
+                    }
+                }
+            else
+                {
+                SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                              TX_GREEN, TX_DARKGRAY);
+                SemerkaDraw (10, 580);
+                SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                              TX_BLACK, TX_BLACK);
+                MoskvichDraw (800, 460, -60, 0, 0, 1, 1);
+                DimokDraw (800, 360-(t-449), 0.5+(t-449)/10);
+                MadamDraw (512, 408-30, 4, TX_MYRED, 4, 1, 1, 0, 0, 1);
+                }
+            }
+        else
+            {
+            SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                          TX_GREEN, TX_DARKGRAY);
+            SemerkaDraw (10, 580);
+            SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                          TX_BLACK, TX_BLACK);
+            MoskvichDraw (800, 460, 0, 0, 0, 0, 1);
+            MadamDraw  (660-(t-299), 260+(t-299), 2, TX_BLUE, 1,
+                        0, 0, 0+(t/10)%2, 1-(t/10)%2, 1);
+            }
+        }
+    }
 
 void Scena1 ()
     {
@@ -856,14 +945,8 @@ void Scena1 ()
 
         ZadniiPlan (t);
         Scena (t);
+        Scena2 (t);
 
-        if ((t>300)&(t<=700))
-            {
-            SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
-                          TX_GREEN, TX_DARKGRAY);
-            SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
-                          TX_BLACK, TX_BLACK);
-            }
         if ((t>=700)&(t<800))
             {
             SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
@@ -879,42 +962,11 @@ void Scena1 ()
                           TX_BLACK, TX_BLACK);
             }
 
-        if ((t>=300)&(t<450))
-            {
-            MadamDraw  (660-(t-299), 260+(t-299), 2, TX_BLUE, 1,
-                        0, 0, 0+(t/10)%2, 1-(t/10)%2, 1);
-            }
-        if ((t>=450)&(t<475))
-            {
-            MadamDraw  (512, 408-30, 4, TX_MYRED, 4,
-                        1, 1, 0, 0, 1);
-            MoskvichDraw (800, 460, -60, 0, 0, 1, 1);
-            DimokDraw (800, 360-(t-449), 0.5+(t-449)/10);
-            }
-        if ((t>=475)&(t<650))
-            {
-            MadamDraw  (512-(t-474), 408+(t-474), 2, TX_BLUE, 1,
-                        0, 0, 0+(t/10)%2, 1-(t/10)%2, 1);
-            }
-
-
-        if ((t>=475)&(t<1600))
+        if ((t>700)&(t<1600))
             {
             MoskvichDraw (800, 460, -60, 0, 0, 1, 1);
             }
 
-        if ((t>=475)&(t<525))
-            {
-            MisterDraw (900, 380, 2, TX_BROWN, 1, 0, 0, 1);
-            }
-        if ((t>=525)&(t<620))
-            {
-            MisterBokDraw (900-(t-524), 380, 0+((t-524)/10%2), 1-((t-524)/10%2), 1);
-            }
-        if ((t>=620)&(t<700))
-            {
-            MisterZadDraw (776, 380, 1);
-            }
         if ((t>=700)&(t<775))
             {
             MisterDraw (776, 380, 4, TX_MYRED, 4, 1, 1, 1);
@@ -937,10 +989,6 @@ void Scena1 ()
                           TX_BLACK, TX_BLACK);
             }
 
-        if ((t>=650)&(t<1000))
-            {
-            MadamZadDraw  (338, 582, 0, 0, 0, 0, 1);
-            }
         if ((t>=1000)&(t<1223))
             {
             MadamZadDraw  (338+(t-999), 582-(t-999),
