@@ -9,7 +9,6 @@ const COLORREF TX_PURPLE   = RGB (186,  85, 211),
                TX_DARKCYAN = RGB (  0, 139, 139),
                TX_MYBROWN  = RGB (139,  69,  19);
 
-void Background    ();
 void SolnceDraw    (int x, int y, int DlinaLucha);
 void OblakoDraw    (int x, int y, double sizeX, double sizeY);
 void CvetokDraw    (int x, int y, double size,
@@ -36,136 +35,22 @@ void MoskvichDraw  (int x, int y, int KapotUp, int OknoDown, int Antena,
                     int Avariika,  double size);
 void DimokDraw     (int x, int y, double Size);
 void Serdechko     (int x, int y, double Size);
+void Background    ();
 void TitlesBegin   ();
-void TitlesEnd     ();
 void ZadniiPlan    (int t);
-void Scena1         (int t);
+void Scena1        (int t);
 void Scena2        (int t);
 void Scena3        (int t);
+void TitlesEnd     ();
 void KameraMotor   ();
 
 int main ()
     {
     txCreateWindow (1400, 700);
-	txSetColor (TX_WHITE);
-	txSetFillColor (TX_WHITE);
-	txClear ();
 
 	TitlesBegin ();
 	KameraMotor ();
     TitlesEnd ();
-    }
-
-void Background ()
-    {
-    txSetColor     (TX_MYBLUE);
-    txSetFillColor (TX_MYBLUE);
-    txRectangle (0, 0, 1400, 200);
-
-    txSetColor     (TX_MYGREEN);
-    txSetFillColor (TX_MYGREEN);
-    txRectangle (0, 200, 1400, 420);
-
-    CvetokDraw ( 40, 240,    1, TX_ORANGE,   TX_WHITE);
-    CvetokDraw (110, 280,    1, TX_MYYELLOW, TX_PURPLE);
-    CvetokDraw (190, 240,    1, TX_WHITE,    TX_ORANGE);
-    CvetokDraw (220, 330,    1, TX_ORANGE,   TX_WHITE);
-    CvetokDraw (310, 240,    1, TX_MYYELLOW, TX_PURPLE);
-    CvetokDraw ( 50, 320,  0.5, TX_MYRED,    TX_MYYELLOW);
-    CvetokDraw (120, 230,  0.5, TX_ORANGE,   TX_WHITE);
-    CvetokDraw (140, 340,  0.5, TX_WHITE,    TX_ORANGE);
-    CvetokDraw (180, 290,  0.5, TX_ORANGE,   TX_WHITE);
-    CvetokDraw (265, 270,  0.5, TX_ORANGE,   TX_WHITE);
-    CvetokDraw (335, 300, 0.75, TX_MYRED,    TX_MYYELLOW);
-    CvetokDraw (280, 340,  0.5, TX_MYYELLOW, TX_PURPLE);
-
-    for (int x=0; x<=480; x+=80)
-        {
-        ZaborDraw (x, 320);
-        }
-    for (int x=800; x<=960; x+=80)
-        {
-        ZaborDraw (x, 320);
-        }
-    for (int x=1280; x<=1360; x+=80)
-        {
-        ZaborDraw (x, 320);
-        }
-
-    txSetColor     (TX_GRAY);
-    txSetFillColor (TX_GRAY);
-    txRectangle (0, 380, 1400, 657);
-
-    txSetColor     (TX_MYGREEN);
-    txSetFillColor (TX_MYGREEN);
-    txRectangle (0, 657, 1400, 700);
-
-    txSetColor     (TX_WHITE);
-	txSetFillColor (TX_WHITE);
-    txRectangle (0, 396, 1400, 400);
-
-    for (int x=20; x<=380; x+=120)
-        {
-        RazmetkaDraw (x, 510);
-        }
-    for (int x=650; x<=1370; x+=120)
-        {
-        RazmetkaDraw (x, 510);
-        }
-
-    txRectangle (0, 641, 1400, 645);
-
-    int x=600;
-    int y=400;
-    while (x>=380)
-        {
-        PerehodDraw (x, y);
-        x-=40;
-        y+=40;
-        }
-    }
-
-void TitlesBegin ()
-    {
-    txBegin ();
-    for (int t=0; t<=300; t++)
-        {
-        txClear ();
-        txSetColor (TX_WHITE);
-        txSetFillColor (TX_WHITE);
-        txRectangle (0, 0, 1400, 700);
-
-        if (t<=100)
-            {
-            txSetColor (TX_BLACK);
-            txSelectFont ("Arial Black", 10+t);
-            txTextOut (600-t*3, 200, "COLUMBIA PICTURES");
-            txSelectFont ("Arial", 5+t);
-            txTextOut (630-t*2, 300, "ïðåäñòàâëÿåò");
-            }
-        if ((t>100)&(t<150))
-            {
-            txSetColor (TX_BLACK);
-            txSelectFont ("Arial Black", 110);
-            txTextOut (300, 200, "COLUMBIA PICTURES");
-            txSelectFont ("Arial", 105);
-            txTextOut (430, 300, "ïðåäñòàâëÿåò");
-            }
-        if ((t>=150)&(t<300))
-            {
-            txSetColor (TX_BLACK);
-            txSelectFont ("Arial Black", 100);
-            txTextOut (100, 200, "ÌÓËÜÒÈÏËÈÊÀÖÈÎÍÍÛÉ ÔÈËÜÌ");
-            }
-        if ((t>=200)&(t<300))
-            {
-            txSetColor (TX_MYRED);
-            txSelectFont ("Arial Blac", 130);
-            txTextOut (475, 300, "ÂÑÒÐÅ×À");
-            }
-        txSleep (1);
-        }
-    txEnd ();
     }
 
 void SolnceDraw   (int x, int y, int DlinaLucha)
@@ -235,6 +120,12 @@ void STODraw (int x, int y, int VorotaOpen, int DverOpen)
                      {x+140, y-60}, {x+140, y   }};
     txPolygon (Pol, 4);
 
+    txSetColor (TX_WHITE);
+    txSelectFont ("Arial Black", 30);
+    txTextOut (x+32,  y-80, "ÃÎÒÎÂÜ");
+    txTextOut (x+13, y-60, "ÁÀÁÎÑÈÊÈ!");
+
+    txSetColor (TX_BLACK);
     txSetFillColor (TX_WHITE);
     txRectangle (x, y-120, x+140, y-VorotaOpen);
 
@@ -743,7 +634,76 @@ void Serdechko (int x, int y, double Size)
     txPolygon (Serdechko, 10);
     }
 
-void TitlesEnd ()
+void Background ()
+    {
+    txSetColor     (TX_MYBLUE);
+    txSetFillColor (TX_MYBLUE);
+    txRectangle (0, 0, 1400, 200);
+
+    txSetColor     (TX_MYGREEN);
+    txSetFillColor (TX_MYGREEN);
+    txRectangle (0, 200, 1400, 420);
+
+    CvetokDraw ( 40, 240,    1, TX_ORANGE,   TX_WHITE);
+    CvetokDraw (110, 280,    1, TX_MYYELLOW, TX_PURPLE);
+    CvetokDraw (190, 240,    1, TX_WHITE,    TX_ORANGE);
+    CvetokDraw (220, 330,    1, TX_ORANGE,   TX_WHITE);
+    CvetokDraw (310, 240,    1, TX_MYYELLOW, TX_PURPLE);
+    CvetokDraw ( 50, 320,  0.5, TX_MYRED,    TX_MYYELLOW);
+    CvetokDraw (120, 230,  0.5, TX_ORANGE,   TX_WHITE);
+    CvetokDraw (140, 340,  0.5, TX_WHITE,    TX_ORANGE);
+    CvetokDraw (180, 290,  0.5, TX_ORANGE,   TX_WHITE);
+    CvetokDraw (265, 270,  0.5, TX_ORANGE,   TX_WHITE);
+    CvetokDraw (335, 300, 0.75, TX_MYRED,    TX_MYYELLOW);
+    CvetokDraw (280, 340,  0.5, TX_MYYELLOW, TX_PURPLE);
+
+    for (int x=0; x<=480; x+=80)
+        {
+        ZaborDraw (x, 320);
+        }
+    for (int x=800; x<=960; x+=80)
+        {
+        ZaborDraw (x, 320);
+        }
+    for (int x=1280; x<=1360; x+=80)
+        {
+        ZaborDraw (x, 320);
+        }
+
+    txSetColor     (TX_GRAY);
+    txSetFillColor (TX_GRAY);
+    txRectangle (0, 380, 1400, 657);
+
+    txSetColor     (TX_MYGREEN);
+    txSetFillColor (TX_MYGREEN);
+    txRectangle (0, 657, 1400, 700);
+
+    txSetColor     (TX_WHITE);
+	txSetFillColor (TX_WHITE);
+    txRectangle (0, 396, 1400, 400);
+
+    for (int x=20; x<=380; x+=120)
+        {
+        RazmetkaDraw (x, 510);
+        }
+    for (int x=650; x<=1370; x+=120)
+        {
+        RazmetkaDraw (x, 510);
+        }
+
+    txRectangle (0, 641, 1400, 645);
+
+    int x=600;
+    int y=400;
+    while (x>=380)
+        {
+        PerehodDraw (x, y);
+        x-=40;
+        y+=40;
+        }
+    }
+
+void TitlesBegin ()
     {
     txBegin ();
     for (int t=0; t<=300; t++)
@@ -753,32 +713,34 @@ void TitlesEnd ()
         txSetFillColor (TX_WHITE);
         txRectangle (0, 0, 1400, 700);
 
-        txSetColor (TX_BLACK);
-        txSelectFont ("Arial Black", 90);
-        txTextOut (300, 750-t*5, "Õóäîæíèê-ìóëüòèïëèêàòîð:");
-        txSelectFont ("Arial", 70);
-        txTextOut (300, 850-t*5, "Ðîìàíîâñêàÿ Àííà Àëåêñàíäðîâíà");
-        txSelectFont ("Arial Black", 130);
-        txTextOut (100, 1250-t*5, "ÑÏÀÑÈÁÎ ÇÀ ÂÍÈÌÀÍÈÅ!!!");
-        txSleep (1);
-        }
-    txEnd ();
-    }
-
-void KameraMotor ()
-    {
-    txBegin ();
-    for (int t=0; t<2000; t++)
-        {
-        txSetFillColor (TX_WHITE);
-        txClear ();
-        Background ();
-
-        ZadniiPlan (t);
-        Scena1 (t);
-        Scena2 (t);
-        Scena3 (t);
-
+        if (t<=100)
+            {
+            txSetColor (TX_BLACK);
+            txSelectFont ("Arial Black", 10+t);
+            txTextOut (600-t*3, 200, "COLUMBIA PICTURES");
+            txSelectFont ("Arial", 5+t);
+            txTextOut (630-t*2, 300, "ïðåäñòàâëÿåò");
+            }
+        if ((t>100)&(t<150))
+            {
+            txSetColor (TX_BLACK);
+            txSelectFont ("Arial Black", 110);
+            txTextOut (300, 200, "COLUMBIA PICTURES");
+            txSelectFont ("Arial", 105);
+            txTextOut (430, 300, "ïðåäñòàâëÿåò");
+            }
+        if ((t>=150)&(t<300))
+            {
+            txSetColor (TX_BLACK);
+            txSelectFont ("Arial Black", 100);
+            txTextOut (100, 200, "ÌÓËÜÒÈÏËÈÊÀÖÈÎÍÍÛÉ ÔÈËÜÌ");
+            }
+        if ((t>=200)&(t<300))
+            {
+            txSetColor (TX_MYRED);
+            txSelectFont ("Arial Blac", 130);
+            txTextOut (475, 300, "ÂÑÒÐÅ×À");
+            }
         txSleep (1);
         }
     txEnd ();
@@ -949,47 +911,35 @@ void Scena3 (int t)
     {
     if (t>700)
         {
-            if (t>775)
+        if (t>775)
+            {
+            if (t>=900)
                 {
-                if (t>=900)
+                if (t>=1000)
                     {
-                    if (t>=1000)
+                    if (t>1223)
                         {
-                        if (t>1223)
+                        if (t>=1373)
                             {
-                            if (t>=1373)
+                            if (t>1550)
                                 {
-                                if (t>1550)
+                                if (t>=1600)
                                     {
-                                    if (t>=1600)
+                                    if (t>=1650)
                                         {
-                                        if (t>=1650)
-                                            {
-                                            SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                                           TX_DARKGRAY, TX_MYRED);
-                                            MoskvichDraw  (800-(t-1649)*5, 460, 0, -50, 30, 0, 1);
-                                            SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                                           TX_BLACK, TX_BLACK);
-                                            }
-                                        else
-                                            {
-                                            SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                                           TX_DARKGRAY, TX_MYRED);
-                                            MoskvichDraw  (800, 460, 0, 0, 0, (t/15)%2, 1);
-                                            MisterBokDraw (776, 380, 0, 0, 1);
-                                            MadamBokDraw  (709, 360, 0, 0, 0, 0, 1);
-                                            SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                                           TX_BLACK, TX_BLACK);
-                                            }
+                                        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                                                       TX_DARKGRAY, TX_MYRED);
+                                        MoskvichDraw  (800-(t-1649)*5, 460, 0, -50, 30, 0, 1);
+                                        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                                                       TX_BLACK, TX_BLACK);
                                         }
                                     else
                                         {
                                         SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
                                                        TX_DARKGRAY, TX_MYRED);
-                                        MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
+                                        MoskvichDraw  (800, 460, 0, 0, 0, (t/15)%2, 1);
                                         MisterBokDraw (776, 380, 0, 0, 1);
                                         MadamBokDraw  (709, 360, 0, 0, 0, 0, 1);
-                                        Serdechko     (742, 370-(t-1549)*2, 0.1+(t-1549)/20);
                                         SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
                                                        TX_BLACK, TX_BLACK);
                                         }
@@ -999,11 +949,11 @@ void Scena3 (int t)
                                     SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
                                                    TX_DARKGRAY, TX_MYRED);
                                     MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
-                                    MisterZadDraw (776, 380, 1);
+                                    MisterBokDraw (776, 380, 0, 0, 1);
+                                    MadamBokDraw  (709, 360, 0, 0, 0, 0, 1);
+                                    Serdechko     (742, 370-(t-1549)*2, 0.1+(t-1549)/20);
                                     SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
                                                    TX_BLACK, TX_BLACK);
-                                    MadamBokDraw  (709, 360, 0+(t/20)%2, 1-(t/20)%2,
-                                                   0, 0, 1);
                                     }
                                 }
                             else
@@ -1014,8 +964,8 @@ void Scena3 (int t)
                                 MisterZadDraw (776, 380, 1);
                                 SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
                                                TX_BLACK, TX_BLACK);
-                                MadamBokDraw  (560+(t-1222), 360, 0, 0,
-                                               0+(t/10)%2, 1-(t/10)%2, 1);
+                                MadamBokDraw  (709, 360, 0+(t/20)%2, 1-(t/20)%2,
+                                               0, 0, 1);
                                 }
                             }
                         else
@@ -1024,11 +974,10 @@ void Scena3 (int t)
                                            TX_DARKGRAY, TX_MYRED);
                             MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
                             MisterZadDraw (776, 380, 1);
-                            SemerkaDraw   (510+(t-999)*5, 580);
                             SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
                                            TX_BLACK, TX_BLACK);
-                            MadamZadDraw  (338+(t-999), 582-(t-999),
-                                           0, 0, 0+(t/10)%2, 1-(t/10)%2, 1);
+                            MadamBokDraw  (560+(t-1222), 360, 0, 0,
+                                           0+(t/10)%2, 1-(t/10)%2, 1);
                             }
                         }
                     else
@@ -1037,38 +986,88 @@ void Scena3 (int t)
                                        TX_DARKGRAY, TX_MYRED);
                         MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
                         MisterZadDraw (776, 380, 1);
-                        SemerkaDraw   (10+(t-899)*5, 580);
+                        SemerkaDraw   (510+(t-999)*5, 580);
                         SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
                                        TX_BLACK, TX_BLACK);
-                        MadamZadDraw  (338, 582, 0, 0, 0, 0, 1);
+                        MadamZadDraw  (338+(t-999), 582-(t-999),
+                                       0, 0, 0+(t/10)%2, 1-(t/10)%2, 1);
                         }
                     }
                 else
                     {
-                    SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_MYYELLOW, TX_DARKGRAY,
+                    SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
                                    TX_DARKGRAY, TX_MYRED);
                     MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
                     MisterZadDraw (776, 380, 1);
-                    SemerkaDraw   (10, 580);
-                    SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_MYYELLOW, TX_DARKGRAY,
+                    SemerkaDraw   (10+(t-899)*5, 580);
+                    SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
                                    TX_BLACK, TX_BLACK);
                     MadamZadDraw  (338, 582, 0, 0, 0, 0, 1);
                     }
                 }
             else
                 {
-                SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
-                              TX_DARKGRAY, TX_MYRED);
-                MoskvichDraw (800, 460, -60, 0, 0, (t/15)%2, 1);
-                MisterDraw   (776, 380, 4, TX_MYRED, 4, 1, 1, 1);
-                SemerkaDraw  (10, 580);
-                SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
-                              TX_BLACK, TX_BLACK);
-                MadamZadDraw (338, 582, 0, 0, 0, 0, 1);
+                SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_MYYELLOW, TX_DARKGRAY,
+                               TX_DARKGRAY, TX_MYRED);
+                MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
+                MisterZadDraw (776, 380, 1);
+                SemerkaDraw   (10, 580);
+                SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_MYYELLOW, TX_DARKGRAY,
+                               TX_BLACK, TX_BLACK);
+                MadamZadDraw  (338, 582, 0, 0, 0, 0, 1);
                 }
+            }
+        else
+            {
+            SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                          TX_DARKGRAY, TX_MYRED);
+            MoskvichDraw (800, 460, -60, 0, 0, (t/15)%2, 1);
+            MisterDraw   (776, 380, 4, TX_MYRED, 4, 1, 1, 1);
+            SemerkaDraw  (10, 580);
+            SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                          TX_BLACK, TX_BLACK);
+            MadamZadDraw (338, 582, 0, 0, 0, 0, 1);
+            }
         }
     }
 
+void TitlesEnd ()
+    {
+    txBegin ();
+    for (int t=0; t<=300; t++)
+        {
+        txClear ();
+        txSetColor (TX_WHITE);
+        txSetFillColor (TX_WHITE);
+        txRectangle (0, 0, 1400, 700);
 
+        txSetColor (TX_BLACK);
+        txSelectFont ("Arial Black", 90);
+        txTextOut (300, 750-t*5, "Õóäîæíèê-ìóëüòèïëèêàòîð:");
+        txSelectFont ("Arial", 70);
+        txTextOut (300, 850-t*5, "Ðîìàíîâñêàÿ Àííà Àëåêñàíäðîâíà");
+        txSelectFont ("Arial Black", 130);
+        txTextOut (100, 1250-t*5, "ÑÏÀÑÈÁÎ ÇÀ ÂÍÈÌÀÍÈÅ!!!");
+        txSleep (1);
+        }
+    txEnd ();
+    }
 
+void KameraMotor ()
+    {
+    txBegin ();
+    for (int t=0; t<2000; t++)
+        {
+        txSetFillColor (TX_WHITE);
+        txClear ();
+        Background ();
 
+        ZadniiPlan (t);
+        Scena1 (t);
+        Scena2 (t);
+        Scena3 (t);
+
+        txSleep (1);
+        }
+    txEnd ();
+    }
