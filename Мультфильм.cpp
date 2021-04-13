@@ -52,7 +52,7 @@ int main ()
     txCreateWindow (1400, 700);
 
     TitlesBegin ();
-	KameraMotor ();
+    KameraMotor ();
     TitlesEnd ();
     }
 
@@ -103,7 +103,7 @@ void CvetokDraw (int x, int y, double size,
 void STODraw (int x, int y, int VorotaOpen, int DverOpen)
     {
     txSetColor (TX_BLACK);
-	txSetFillColor (TX_GRAY);
+    txSetFillColor (TX_GRAY);
     POINT PerednyayaStena [10] = {{x,     y    }, {x-20,  y    },
                                   {x-20,  y-140}, {x+160, y-140},
                                   {x+160, y-100}, {x+260, y-100},
@@ -125,8 +125,8 @@ void STODraw (int x, int y, int VorotaOpen, int DverOpen)
 
     txSetColor (TX_WHITE);
     txSelectFont ("Arial Black", 30);
-    txTextOut (x+32,  y-80, "√Œ“Œ¬‹");
-    txTextOut (x+13, y-60, "¡¿¡Œ—» »!");
+    txTextOut (x+32,  y-80, "–ì–û–¢–û–í–¨");
+    txTextOut (x+13, y-60, "–ë–ê–ë–û–°–ò–ö–ò!");
 
     txSetColor (TX_BLACK);
     txSetFillColor (TX_WHITE);
@@ -147,7 +147,7 @@ void STODraw (int x, int y, int VorotaOpen, int DverOpen)
     txRectangle (x+20, y-150, x+120, y-110);
     txSetColor (TX_WHITE);
     txSelectFont ("Comic Sans MS", 40, 0, FW_BOLD);
-    txDrawText  (x+20, y-150, x+120, y-110, "—“Œ");
+    txDrawText  (x+20, y-150, x+120, y-110, "–°–¢–û");
 
     txSetColor (TX_BLACK);
     txSetFillColor (TX_BLACK);
@@ -185,7 +185,7 @@ void PerehodDraw (int x, int y)
                          {x+100, y+20}, {x- 20, y+20}};
     txPolygon (perehod1, 4);
 
-   	txSetFillColor (TX_YELLOW);
+    txSetFillColor (TX_YELLOW);
     POINT perehod2[4] = {{x-20, y+20}, {x+100, y+20},
                          {x+80, y+40}, {x- 40, y+40}};
     txPolygon (perehod2, 4);
@@ -281,7 +281,7 @@ void MadamBokDraw (int x, int y, int UpRukaL, int UpRukaP,
     }
 
 void MadamZadDraw (int x, int y, int UpRukaL, int UpRukaP,
-                       int UpNogaL, int UpNogaP, double Size)
+                   int UpNogaL, int UpNogaP, double Size)
     {
     txSetColor (TX_PINK);
     txSetFillColor (TX_PINK);
@@ -309,7 +309,7 @@ void MadamZadDraw (int x, int y, int UpRukaL, int UpRukaP,
     }
 
 void MisterDraw (int x, int y, int Glaza, COLORREF Zrachki, int Rot,
-                int UpRukaL, int UpRukaP, double Size)
+                 int UpRukaL, int UpRukaP, double Size)
     {
     txSetColor (TX_MYBROWN);
     txSetFillColor (TX_WHITE);
@@ -410,33 +410,33 @@ void SvetoforDraw (int x, int y, int Visota,
                    COLORREF Red, COLORREF Yellow, COLORREF Green,
                    COLORREF Go, COLORREF Stop)
     {
-	txSetColor     (Red);
-	txSetFillColor (Red);
-	txEllipse (x-25, y-130-Visota, x+35, y-90-Visota);
+    txSetColor     (Red);
+    txSetFillColor (Red);
+    txEllipse (x-25, y-130-Visota, x+35, y-90-Visota);
 
-	txSetColor     (Yellow);
-	txSetFillColor (Yellow);
-	txEllipse (x-25, y-90 -Visota, x+35, y-50-Visota);
+    txSetColor     (Yellow);
+    txSetFillColor (Yellow);
+    txEllipse (x-25, y-90 -Visota, x+35, y-50-Visota);
 
     txSetColor     (Green);
-	txSetFillColor (Green);
-	txEllipse (x-25, y-50 -Visota, x+35, y-10-Visota);
+    txSetFillColor (Green);
+    txEllipse (x-25, y-50 -Visota, x+35, y-10-Visota);
 
     txSetColor     (TX_BLACK);
-	txSetFillColor (TX_BLACK);
-	POINT Svetofor [8] = {{x,    y    +Visota}, {x+10, y    +Visota},
+    txSetFillColor (TX_BLACK);
+    POINT Svetofor [8] = {{x,    y    +Visota}, {x+10, y    +Visota},
                           {x+10, y    -Visota}, {x+25, y    -Visota},
                           {x+25, y-140-Visota}, {x-15, y-140-Visota},
                           {x-15, y    -Visota}, {x,    y    -Visota}};
     txPolygon (Svetofor, 8);
 
     txSetColor     (Go);
-	txSetFillColor (Go);
-	txCircle (x+5, y-60-Visota, 15);
+    txSetFillColor (Go);
+    txCircle (x+5, y-60-Visota, 15);
 
     txSetColor     (Stop);
-	txSetFillColor (Stop);
-	txCircle (x+5, y-25-Visota, 15);
+    txSetFillColor (Stop);
+    txCircle (x+5, y-25-Visota, 15);
     }
 
 void SemerkaDraw (int x, int y)
@@ -682,7 +682,7 @@ void Background ()
     txRectangle (0, 657, 1400, 700);
 
     txSetColor     (TX_WHITE);
-	txSetFillColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
     txRectangle (0, 396, 1400, 400);
 
     for (int x=20; x<=380; x+=120)
@@ -709,40 +709,40 @@ void Background ()
 void TitlesBegin ()
     {
     txBegin ();
-    for (int t=0; t<=300; t++)
+    for (int time=0; time<=300; time++)
         {
         txClear ();
         txSetColor (TX_WHITE);
         txSetFillColor (TX_WHITE);
         txRectangle (0, 0, 1400, 700);
 
-        if (t<=100)
+        if (time<=100)
             {
             txSetColor (TX_BLACK);
-            txSelectFont ("Arial Black", 10+t);
-            txTextOut (600-t*3, 200, "COLUMBIA PICTURES");
-            txSelectFont ("Arial", 5+t);
-            txTextOut (630-t*2, 300, "ÔÂ‰ÒÚ‡‚ÎˇÂÚ");
+            txSelectFont ("Arial Black", 10+time);
+            txTextOut (600-time*3, 200, "COLUMBIA PICTURES");
+            txSelectFont ("Arial", 5+time);
+            txTextOut (630-time*2, 300, "–ø—Ä–µ–¥—Å—Ç–∞–≤–ª—è–µ—Ç");
             }
-        if ((t>100)&(t<150))
+        if ((time>100)&(time<150))
             {
             txSetColor (TX_BLACK);
             txSelectFont ("Arial Black", 110);
             txTextOut (300, 200, "COLUMBIA PICTURES");
             txSelectFont ("Arial", 105);
-            txTextOut (430, 300, "ÔÂ‰ÒÚ‡‚ÎˇÂÚ");
+            txTextOut (430, 300, "–ø—Ä–µ–¥—Å—Ç–∞–≤–ª—è–µ—Ç");
             }
-        if ((t>=150)&(t<300))
+        if ((time>=150)&(time<300))
             {
             txSetColor (TX_BLACK);
             txSelectFont ("Arial Black", 100);
-            txTextOut (100, 200, "Ã”À‹“»œÀ» ¿÷»ŒÕÕ€… ‘»À‹Ã");
+            txTextOut (100, 200, "–ú–£–õ–¨–¢–ò–ü–õ–ò–ö–ê–¶–ò–û–ù–ù–´–ô –§–ò–õ–¨–ú");
             }
-        if ((t>=200)&(t<300))
+        if ((time>=200)&(time<300))
             {
             txSetColor (TX_MYRED);
             txSelectFont ("Arial Black", 130);
-            txTextOut (475, 300, "¬—“–≈◊¿");
+            txTextOut (475, 300, "–í–°–¢–†–ï–ß–ê");
             }
         txSleep (1);
         }
@@ -1008,7 +1008,7 @@ void Konec (int time)
 void TitlesEnd ()
     {
     txBegin ();
-    for (int t=0; t<=300; t++)
+    for (int time=0; time<=300; time++)
         {
         txClear ();
         txSetColor (TX_WHITE);
@@ -1017,11 +1017,11 @@ void TitlesEnd ()
 
         txSetColor (TX_BLACK);
         txSelectFont ("Arial Black", 90);
-        txTextOut (300, 750-t*5, "’Û‰ÓÊÌËÍ-ÏÛÎ¸ÚËÔÎËÍ‡ÚÓ:");
+        txTextOut (300, 750-time*5, "–•—É–¥–æ–∂–Ω–∏–∫-–º—É–ª—å—Ç–∏–ø–ª–∏–∫–∞—Ç–æ—Ä:");
         txSelectFont ("Arial", 70);
-        txTextOut (300, 850-t*5, "–ÓÏ‡ÌÓ‚ÒÍ‡ˇ ¿ÌÌ‡ ¿ÎÂÍÒ‡Ì‰Ó‚Ì‡");
+        txTextOut (300, 850-time*5, "–†–æ–º–∞–Ω–æ–≤—Å–∫–∞—è –ê–Ω–Ω–∞ –ê–ª–µ–∫—Å–∞–Ω–¥—Ä–æ–≤–Ω–∞");
         txSelectFont ("Arial Black", 130);
-        txTextOut (100, 1250-t*5, "—œ¿—»¡Œ «¿ ¬Õ»Ã¿Õ»≈!!!");
+        txTextOut (100, 1250-time*5, "–°–ü–ê–°–ò–ë–û –ó–ê –í–ù–ò–ú–ê–ù–ò–ï!!!");
         txSleep (1);
         }
     txEnd ();
