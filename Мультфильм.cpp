@@ -41,7 +41,9 @@ void ZadniiPlan    (int time);
 void Nachalo       (int time);
 void Polomka       (int time);
 void Ocenka        (int time);
-void Scena3        (int t);
+void NaStart       (int time);
+void Vstrecha      (int time);
+void Konec         (int time);
 void TitlesEnd     ();
 void KameraMotor   ();
 
@@ -895,127 +897,111 @@ void Ocenka (int time)
         }
     }
 
-void Scena3 (int t)
+void NaStart (int time)
     {
-    if (t>700)
+    if (time>700 && time<=775)
         {
-        if (t>775)
-            {
-            if (t>=900)
-                {
-                if (t>=1000)
-                    {
-                    if (t>1223)
-                        {
-                        if (t>=1373)
-                            {
-                            if (t>1550)
-                                {
-                                if (t>=1600)
-                                    {
-                                    if (t>=1650)
-                                        {
-                                        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                                       TX_DARKGRAY, TX_MYRED);
-                                        MoskvichDraw  (800-(t-1649)*5, 460, 0, -50, 30, 0, 1);
-                                        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                                       TX_BLACK, TX_BLACK);
-                                        }
-                                    else
-                                        {
-                                        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                                       TX_DARKGRAY, TX_MYRED);
-                                        MoskvichDraw  (800, 460, 0, 0, 0, (t/15)%2, 1);
-                                        MisterBokDraw (776, 380, 0, 0, 1);
-                                        MadamBokDraw  (709, 360, 0, 0, 0, 0, 1);
-                                        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                                       TX_BLACK, TX_BLACK);
-                                        }
-                                    }
-                                else
-                                    {
-                                    SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                                   TX_DARKGRAY, TX_MYRED);
-                                    MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
-                                    MisterBokDraw (776, 380, 0, 0, 1);
-                                    MadamBokDraw  (709, 360, 0, 0, 0, 0, 1);
-                                    Serdechko     (742, 370-(t-1549)*2, 0.1+(t-1549)/20);
-                                    SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                                   TX_BLACK, TX_BLACK);
-                                    }
-                                }
-                            else
-                                {
-                                SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                               TX_DARKGRAY, TX_MYRED);
-                                MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
-                                MisterZadDraw (776, 380, 1);
-                                SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                               TX_BLACK, TX_BLACK);
-                                MadamBokDraw  (709, 360, 0+(t/20)%2, 1-(t/20)%2,
-                                               0, 0, 1);
-                                }
-                            }
-                        else
-                            {
-                            SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                           TX_DARKGRAY, TX_MYRED);
-                            MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
-                            MisterZadDraw (776, 380, 1);
-                            SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                           TX_BLACK, TX_BLACK);
-                            MadamBokDraw  (560+(t-1222), 360, 0, 0,
-                                           0+(t/10)%2, 1-(t/10)%2, 1);
-                            }
-                        }
-                    else
-                        {
-                        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                       TX_DARKGRAY, TX_MYRED);
-                        MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
-                        MisterZadDraw (776, 380, 1);
-                        SemerkaDraw   (510+(t-999)*5, 580);
-                        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                       TX_BLACK, TX_BLACK);
-                        MadamZadDraw  (338+(t-999), 582-(t-999),
-                                       0, 0, 0+(t/10)%2, 1-(t/10)%2, 1);
-                        }
-                    }
-                else
-                    {
-                    SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                   TX_DARKGRAY, TX_MYRED);
-                    MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
-                    MisterZadDraw (776, 380, 1);
-                    SemerkaDraw   (10+(t-899)*5, 580);
-                    SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
-                                   TX_BLACK, TX_BLACK);
-                    MadamZadDraw  (338, 582, 0, 0, 0, 0, 1);
-                    }
-                }
-            else
-                {
-                SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_MYYELLOW, TX_DARKGRAY,
-                               TX_DARKGRAY, TX_MYRED);
-                MoskvichDraw  (800, 460, -60, 0, 0, (t/15)%2, 1);
-                MisterZadDraw (776, 380, 1);
-                SemerkaDraw   (10, 580);
-                SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_MYYELLOW, TX_DARKGRAY,
-                               TX_BLACK, TX_BLACK);
-                MadamZadDraw  (338, 582, 0, 0, 0, 0, 1);
-                }
-            }
-        else
-            {
-            SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
-                          TX_DARKGRAY, TX_MYRED);
-            MoskvichDraw (800, 460, -60, 0, 0, (t/15)%2, 1);
-            MisterDraw   (776, 380, 4, TX_MYRED, 4, 1, 1, 1);
-            SemerkaDraw  (10, 580);
-            SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
-                          TX_BLACK, TX_BLACK);
-            MadamZadDraw (338, 582, 0, 0, 0, 0, 1);
-            }
+        SvetoforDraw (750, 300, 70, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                      TX_DARKGRAY, TX_MYRED);
+        MoskvichDraw (800, 460, -60, 0, 0, (time/15)%2, 1);
+        MisterDraw   (776, 380, 4, TX_MYRED, 4, 1, 1, 1);
+        SemerkaDraw  (10, 580);
+        SvetoforDraw (310, 570, 100, TX_MYRED, TX_DARKGRAY, TX_DARKGRAY,
+                      TX_BLACK, TX_BLACK);
+        MadamZadDraw (338, 582, 0, 0, 0, 0, 1);
+        }
+    if (time>775 && time<900)
+        {
+        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_MYYELLOW, TX_DARKGRAY,
+                       TX_DARKGRAY, TX_MYRED);
+        MoskvichDraw  (800, 460, -60, 0, 0, (time/15)%2, 1);
+        MisterZadDraw (776, 380, 1);
+        SemerkaDraw   (10, 580);
+        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_MYYELLOW, TX_DARKGRAY,
+                       TX_BLACK, TX_BLACK);
+        MadamZadDraw  (338, 582, 0, 0, 0, 0, 1);
+        }
+    if (time>=900 && time<1000)
+        {
+        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_DARKGRAY, TX_MYRED);
+        MoskvichDraw  (800, 460, -60, 0, 0, (time/15)%2, 1);
+        MisterZadDraw (776, 380, 1);
+        SemerkaDraw   (10+(time-899)*5, 580);
+        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_BLACK, TX_BLACK);
+        MadamZadDraw  (338, 582, 0, 0, 0, 0, 1);
+        }
+    }
+
+void Vstrecha (int time)
+    {
+    if (time>=1000 && time<=1223)
+        {
+        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_DARKGRAY, TX_MYRED);
+        MoskvichDraw  (800, 460, -60, 0, 0, (time/15)%2, 1);
+        MisterZadDraw (776, 380, 1);
+        SemerkaDraw   (510+(time-999)*5, 580);
+        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_BLACK, TX_BLACK);
+        MadamZadDraw  (338+(time-999), 582-(time-999),
+                       0, 0, 0+(time/10)%2, 1-(time/10)%2, 1);
+        }
+    if (time>1223 && time<=1373)
+        {
+        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_DARKGRAY, TX_MYRED);
+        MoskvichDraw  (800, 460, -60, 0, 0, (time/15)%2, 1);
+        MisterZadDraw (776, 380, 1);
+        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_BLACK, TX_BLACK);
+        MadamBokDraw  (560+(time-1222), 360, 0, 0,
+                       0+(time/10)%2, 1-(time/10)%2, 1);
+        }
+    if (time>1373 && time<1550)
+        {
+        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_DARKGRAY, TX_MYRED);
+        MoskvichDraw  (800, 460, -60, 0, 0, (time/15)%2, 1);
+        MisterZadDraw (776, 380, 1);
+        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_BLACK, TX_BLACK);
+        MadamBokDraw  (709, 360, 0+(time/20)%2, 1-(time/20)%2,
+                       0, 0, 1);
+        }
+    if (time>=1550 && time<1600)
+        {
+        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_DARKGRAY, TX_MYRED);
+        MoskvichDraw  (800, 460, -60, 0, 0, (time/15)%2, 1);
+        MisterBokDraw (776, 380, 0, 0, 1);
+        MadamBokDraw  (709, 360, 0, 0, 0, 0, 1);
+        Serdechko     (742, 370-(time-1549)*2, 0.1+(time-1549)/20);
+        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_BLACK, TX_BLACK);
+        }
+    }
+
+void Konec (int time)
+    {
+    if (time>=1600 && time<1650)
+        {
+        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_DARKGRAY, TX_MYRED);
+        MoskvichDraw  (800, 460, 0, 0, 0, (time/15)%2, 1);
+        MisterBokDraw (776, 380, 0, 0, 1);
+        MadamBokDraw  (709, 360, 0, 0, 0, 0, 1);
+        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_BLACK, TX_BLACK);
+        }
+    if (time>=1650)
+        {
+        SvetoforDraw  (750, 300, 70, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_DARKGRAY, TX_MYRED);
+        MoskvichDraw  (800-(time-1649)*5, 460, 0, -50, 30, 0, 1);
+        SvetoforDraw  (310, 570, 100, TX_DARKGRAY, TX_DARKGRAY, TX_GREEN,
+                       TX_BLACK, TX_BLACK);
         }
     }
 
@@ -1054,7 +1040,9 @@ void KameraMotor ()
         Nachalo (time);
         Polomka (time);
         Ocenka (time);
-        Scena3 (time);
+        NaStart (time);
+        Vstrecha (time);
+        Konec (time);
 
         txSleep (1);
         }
